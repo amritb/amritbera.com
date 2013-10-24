@@ -2,6 +2,6 @@ nav
 	div.section.group
 		div.col.span_1_of_3
 		div.col.span_2_of_3
-			a(href="/", class="#{ current.source == 'index' ? 'active' : '' }") Home
-			a(href="/journals", class="#{ current.source == 'journals' ? 'active' : '' }") Journal
+			a(href="/", class="#{ current.path[0] == 'index' ? 'active' : '' }") Home
+			a(href="/journal", class="#{ current.path[0] == 'journal' ? 'active' : '' }") Journal
 			a(href="/contact", class="#{ current.source == 'contact' ? 'active' : '' }") Contact

@@ -8,6 +8,6 @@ html
 		meta(name="viewport", content="width=device-width, initial-scale=1")
 	body
 		!= partial("_shared/nav")
-			div#content
+			div#content(class= (current.path[0] && current.path[1] !== 'index' ? current.path[0] : ''))
 				div.wrapper
 					!= yield
