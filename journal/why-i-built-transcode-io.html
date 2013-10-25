@@ -1,0 +1,24 @@
+<!DOCTYPE html><html><head><title>Amrit Bera - Drupal & Node.js developer based in India</title><link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800"><link rel="stylesheet" href="/responsive.css"><link rel="stylesheet" href="/main.css"><meta name="viewport" content="width=device-width, initial-scale=1"></head><body><nav><div class="section group"><div class="col span_1_of_3"></div><div class="col span_2_of_3"><a href="/">Home</a><a href="/journal" class="active">Journal</a><a href="/contact">Contact</a></div></div></nav><div id="content" class="journal"><div class="wrapper"><h1>Why I built transcode.io</h1>
+<p>I have been working with Drupal for past 5 years. I built sites for several people &amp; multinational brands.</p>
+<p>One thing I have noticed among all is, people do want to embed videos in their sites. Not just Vimeo or Youtube, but they want to upload and put those in the site. Of-course I say them its not a good idea to directly to directly put those in the site, as they are huge. Then I explain them about transcoding and how much time it consumes to integrate. Also brief them about Zencoder and other similar solutions (I feel these are quite expensive and restricted, as I regularly work with ElasticTranscoder on high budget projects).</p>
+<p> As far as I know, drupal don&#39;t have any direct approach to integrate ElasticTranscoder. It does have modules for uploading to S3, but you are on your own with ElasticTranscoder. I have a custom module to do it, but still don&#39;t like it much. I have this bad habit of writing too much code even if there are direct solutions.I just want it my way. </p>
+<h2>I wanted a tool or a system which will take care of all the S3 stuffs and then transcoding &amp; storing it for later use.</h2>
+<p>All this should happen seamlessly. I don&#39;t want to charge my clients exclusively for the integration (storage and transcoding charges are anyways there). Yet I don&#39;t want to loose the flexibility to code my &lt;video&gt; element and use whatever player I like.</p>
+<p>I built transcode.io which does exactly this. Users upload HD videos which are saved in the host server or a CDN. This is a very common practice with just file upload form element and some validation. Developers sore the path of the file in db and then prints it back inside the video element&#39;s source property.</p>
+<h2>Transcode.io just want you to pass in the video path and it does the rest.</h2>
+<p>Transcodes it and then stores it to S3. When its done, it also gives a 301 redirect to the S3 transcoded video file. Also it sends temporary processing videos when needed. </p>
+<p>Its built with Node.js and heavily uses streams. Hosted with Heroku (for now). I have released an alpha version (just a MVP) to see if anyone else want to use it. If you are interested, please submit the form at <a href="http://transcode.io">http://transcode.io</a> and I will send you your account ID.</p>
+<p>Happy transcoding :)</p>
+</div><div class="disqus-comments"></div></div><script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-16031969-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script></body></html>

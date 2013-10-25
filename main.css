@@ -3,10 +3,11 @@ img{max-width:100%}
 a{color:#000;text-decoration:none}
 a:hover{border-bottom:1px solid #FFD000}
 p,h1,h2,h3,h4,h5,h6{font-weight:300}
-h1{font-size:65px;line-height:1.2em;border-bottom:#CCC solid 1px;padding:20px 0}
+h1{font-size:62px;line-height:1.2em;padding:20px 0}
 h2{font-size:30px}
 h4{font-size:24px}
 ::selection{background-color:#FFD000;color:#000}
+.disqus-comments{width:60%;margin:0 auto;margin-top:50px}
 nav{margin:20px 0 40px}
 nav a{display:inline-block;margin-right:20px;text-decoration:none;color:black;text-transform:uppercase;letter-spacing:2px;font-weight:600;border-bottom:4px solid #fff}
 nav a:hover,nav a.active{border-bottom:4px solid #FFD000}
@@ -16,8 +17,8 @@ nav a:hover,nav a.active{border-bottom:4px solid #FFD000}
 .front div.logo-wrapper{width:80%}
 .front-copy .wrapper{margin-right:18%}
 .front-copy p{font-size:20px;line-height:150%}
-@media only screen and (max-width:480px){.front-copy .wrapper{margin-top:50px;margin-right:0} .front div.wrapper.hola-image{padding:20px} .front div.logo-wrapper{width:100%}}.content p,.content h2,.content h4{margin:0 auto}
-.content p{font-size:22px;width:60%;margin-bottom:27px}
-.content h2{font-weight:700;width:80%}
-.content h4{font-weight:600;width:80%}
-@media only screen and (max-width:480px){.content p{width:100%}}
+@media only screen and (max-width:480px){.front-copy .wrapper{margin-top:50px;margin-right:0} .front div.wrapper.hola-image{padding:20px} .front div.logo-wrapper{width:100%}}.journal p,.journal h1,.journal h2{margin:0 auto}
+.journal p{font-size:24px;width:60%;margin:45px auto}
+.journal h1{text-align:center;font-weight:800;padding:50px 0 60px}
+.journal h2{font-weight:800;text-align:center;width:80%;font-size:40px;line-height:46px;padding:40px 0}
+@media only screen and (max-width:480px){.journal p,h1,h2{width:100%} .journal h1{font-size:45px;padding:20px 0 10px} .journal h2{width:100%;font-size:30px;line-height:36px;padding:20px 0}}.journal-list{width:60%;margin:0 auto}
