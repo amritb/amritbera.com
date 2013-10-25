@@ -25,9 +25,8 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 h1{
-	font-size: 65px;
+	font-size: 62px;
 	line-height: 1.2em;
-	border-bottom: #CCC solid 1px;
 	padding: 20px 0;
 }
 
@@ -46,6 +45,12 @@ h4 {
 ::selection {
 	background-color: #FFD000;
 	color: #000;
+}
+
+.disqus-comments {
+	width: 60%;
+	margin: 0 auto;
+	margin-top: 50px;
 }
 
 /*--------------------------- NAV ---------------------------*/
@@ -123,31 +128,54 @@ nav a:hover, nav a.active {
 }
 
 /*------------------------- CONTENT --------------------------*/
-.content{
+.journal{
 
-	p, h2, h4 {
+	p, h1, h2 {
 		margin: 0 auto;
 	}
 
 	p {
-		font-size: 22px;
+		font-size: 24px;
 		width: 60%;
-		margin-bottom: 27px;
+		margin: 45px auto;
+	}
+
+	h1 {
+		text-align: center;
+		font-weight: 800;
+		padding: 50px 0 60px;
 	}
 
 	h2 {
-		font-weight: 700;
+		font-weight: 800;
+		text-align: center;
 		width: 80%;
-	}
-
-	h4 {
-		font-weight: 600;
-		width: 80%;
+		font-size: 40px;
+		line-height: 46px;
+		padding: 40px 0;
 	}
 }
 
 @media only screen and (max-width: 480px) {
-	.content p{
+	.journal p, h1, h2 {
 		width: 100%;
 	}
+
+	.journal h1 {
+		font-size: 45px;
+		padding: 20px 0 10px;
+	}
+
+	.journal h2 {
+		width: 100%;
+		font-size: 30px;
+		line-height: 36px;
+		padding: 20px 0;
+	}
+}
+
+/* ------------------------ JOURNAL LIST ---------------------*/
+.journal-list {
+	width: 60%;
+	margin: 0 auto;
 }

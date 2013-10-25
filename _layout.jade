@@ -8,6 +8,12 @@ html
 		meta(name="viewport", content="width=device-width, initial-scale=1")
 	body
 		!= partial("_shared/nav")
-			div#content(class= (current.path[0] && current.path[1] !== 'index' ? current.path[0] : ''))
+			div#content(class= (current.path[0] == 'journal' && current.path[1] !== 'index' ? current.path[0] : ''))
 				div.wrapper
 					!= yield
+
+				if current.path[0] == "journal" && current.path[1] !== "index"
+					div.disqus-comments
+						//- include _shared/disqus.html
+
+		include _shared/google_analytics.html

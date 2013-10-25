@@ -1,3 +1,6 @@
-for journal, slug in public.journal.data
-	a(href="/journal/#{ slug }")
-		h2 #{journal.title}
+div.journal-list
+	ul
+		for journal, slug in public.journal.data
+			li
+				h3
+					a(href="/journal/#{ slug }") #{journal.date} - #{journal.title}
