@@ -11,7 +11,7 @@ h4{font-size:24px}
 nav{margin:20px 0 40px}
 nav a{display:inline-block;margin-right:20px;text-decoration:none;color:black;text-transform:uppercase;letter-spacing:2px;font-weight:600;border-bottom:4px solid #fff}
 nav a:hover,nav a.active{border-bottom:4px solid #FFD000}
-@media only screen and (max-width:480px){nav{text-align:center} nav a{font-size:14px}}.nav-align-center{text-align:center;padding-top:9.5px}
+@media only screen and (max-width:480px){nav{text-align:center} nav a{font-size:13px;margin: 0 5px;}}.nav-align-center{text-align:center;padding-top:9.5px}
 .nav-align-center a{margin:0 10px}
 .front h4{margin:4px;font-size:22px}
 .front div.wrapper.hola{margin-top:15%}
