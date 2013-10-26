@@ -11,7 +11,9 @@ h4{font-size:24px}
 nav{margin:20px 0 40px}
 nav a{display:inline-block;margin-right:20px;text-decoration:none;color:black;text-transform:uppercase;letter-spacing:2px;font-weight:600;border-bottom:4px solid #fff}
 nav a:hover,nav a.active{border-bottom:4px solid #FFD000}
-@media only screen and (max-width:480px){nav{text-align:center}}.front h4{margin:4px;font-size:22px}
+@media only screen and (max-width:480px){nav{text-align:center} nav a{font-size:15px}}.nav-align-center{text-align:center;padding-top:9.5px}
+.nav-align-center a{margin:0 10px}
+.front h4{margin:4px;font-size:22px}
 .front div.wrapper.hola{margin-top:15%}
 .front div.wrapper.hola-image{padding:20px 40px 20px 0}
 .front div.logo-wrapper{width:80%}
@@ -22,3 +24,4 @@ nav a:hover,nav a.active{border-bottom:4px solid #FFD000}
 .journal h1{text-align:center;font-weight:800;padding:50px 0 60px}
 .journal h2{font-weight:800;text-align:center;width:80%;font-size:40px;line-height:46px;padding:40px 0}
 @media only screen and (max-width:480px){.journal p,h1,h2{width:100%} .journal h1{font-size:45px;padding:20px 0 10px} .journal h2{width:100%;font-size:30px;line-height:36px;padding:20px 0}}.journal-list{width:60%;margin:0 auto}
+@media only screen and (max-width:480px){.journal-list{width:100%}}
