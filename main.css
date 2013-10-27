@@ -20,8 +20,11 @@ nav a:hover,nav a.active{border-bottom:4px solid #FFD000}
 .front-copy .wrapper{margin-right:18%;margin-bottom:150px}
 .front-copy p{font-size:20px;line-height:150%}
 @media only screen and (max-width:480px){.front-copy .wrapper{margin-top:50px;margin-right:0} .front div.wrapper.hola-image{padding:20px} .front div.logo-wrapper{width:100%}}.journal p,.journal h1,.journal h2{margin:0 auto}
+.journal p a,.journal h1 a,.journal h2 a{border-bottom:1px solid #FFD000}
+.journal pre{width:60%;margin:45px auto;}
+.journal pre code{padding:0}
 .journal p{font-size:24px;width:60%;margin:45px auto}
 .journal h1{text-align:center;font-weight:800;padding:50px 0 60px}
 .journal h2{font-weight:800;text-align:center;width:80%;font-size:40px;line-height:46px;padding:40px 0}
-@media only screen and (max-width:480px){.journal p,h1,h2{width:100%} .journal h1{font-size:45px;padding:20px 0 10px} .journal h2{width:100%;font-size:30px;line-height:36px;padding:20px 0}}.journal-list{width:60%;margin:0 auto}
+@media only screen and (max-width:480px){.journal p,.journal h1,.journal h2,.journal pre{width:100%} .journal h1{font-size:45px;padding:20px 0 10px} .journal h2{width:100%;font-size:30px;line-height:36px;padding:20px 0}}.journal-list{width:60%;margin:0 auto}
 @media only screen and (max-width:480px){.journal-list{width:100%}}
