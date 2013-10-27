@@ -1,11 +1,17 @@
 {
-	"hello-world": {
-		"title": "Hello World",
-		"date": "Oct 15, 2013"
+
+	"oh-dear-harp": {
+		"title": "Oh dear Harp!",
+		"date": "Oct 27, 2013"
 	},
 
 	"why-i-built-transcode-io": {
 		"title": "Why I built transcode.io",
-		"date": "Oct 21, 2013"
+		"date": "Oct 18, 2013"
+	},
+
+	"hello-world-again": {
+		"title": "Hello World, again",
+		"date": "Sept 24, 2013"
 	}
 }

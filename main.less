@@ -159,6 +159,21 @@ nav a:hover, nav a.active {
 		margin: 0 auto;
 	}
 
+	p a, h1 a, h2 a {
+		border-bottom: 1px solid #FFD000;
+	}
+
+	pre {
+		width: 60%;
+		margin: 45px auto;
+		/*overflow: auto;
+		padding-bottom: 10px; */
+	}
+
+	pre code {
+		padding: 0;
+	}
+
 	p {
 		font-size: 24px;
 		width: 60%;
@@ -182,9 +197,11 @@ nav a:hover, nav a.active {
 }
 
 @media only screen and (max-width: 480px) {
-	.journal p, h1, h2 {
-		width: 100%;
-	}
+	.journal{
+		p, h1, h2, pre {
+			width: 100%;
+		}
+	} 
 
 	.journal h1 {
 		font-size: 45px;

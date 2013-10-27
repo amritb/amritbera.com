@@ -1,10 +1,15 @@
 !!!
 html
 	head
-		title Amrit Bera - Drupal & Node.js developer based in India
+		title= (current.path[0] === 'journal' && current.path[1] !== 'index' ? public.journal.data[current.path[1]]['title'] + ' - Amrit Bera' : 'Amrit Bera - Drupal & Node.js developer based in India (Bangalore, Pune, Mumbai & Kolkata)')
+
+		if current.path[0] == 'journal' && current.path[1] !== 'index'
+			link(rel="stylesheet", href="http://yandex.st/highlightjs/7.3/styles/googlecode.min.css")
+
 		link(rel="stylesheet", href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800")
 		link(rel="stylesheet", href="/responsive.css")
 		link(rel="stylesheet", href="/main.css")
+
 		meta(name="viewport", content="width=device-width, initial-scale=1")
 	body
 		!= partial("_shared/nav")
@@ -17,3 +22,8 @@ html
 						include _shared/disqus.html
 
 		include _shared/google_analytics.html
+
+		if current.path[0] == 'journal' && current.path[1] !== 'index'
+			script(src="http://yandex.st/highlightjs/7.3/highlight.min.js")
+			script.
+				hljs.initHighlightingOnLoad();

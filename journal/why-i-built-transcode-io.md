@@ -15,6 +15,6 @@ I built transcode.io which does exactly this. Users upload HD videos which are s
 
 Transcodes it and then stores it to S3. When its done, it also gives a 301 redirect to the S3 transcoded video file. Also it sends temporary processing videos when needed. 
 
-Its built with Node.js and heavily uses streams. Hosted with Heroku (for now). I have released an alpha version (just a MVP) to see if anyone else want to use it. If you are interested, please submit the form at http://transcode.io and I will send you your account ID.
+Its built with Node.js and heavily uses streams. Hosted with Heroku (for now). I have released an alpha version (just a MVP) to see if anyone else want to use it. If you are interested, please submit the form at [transcode.io](http://transcode.io) and I will send you your account ID.
 
 Happy transcoding :)
