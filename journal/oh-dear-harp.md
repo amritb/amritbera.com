@@ -11,9 +11,9 @@ Then came across this [hacker news post](https://news.ycombinator.com/item?id=65
 [Kenneth's](http://kennethormandy.com/journal/start-a-blog-with-harp) post helped me a lot to get started but I got stuck with putting it to github pages. Ended up with this structure:
 
 ````
-|-- amritbera.com           <-- Branch 'harp'
+|-- amritbera.com         <-- Branch 'harp'
 |-- harp_amritbera_www
-|-- amritbera.com       <-- Branch 'gh-pages'
+|-- amritbera.com         <-- Branch 'gh-pages'
 ````
 Then I compiled the source with
 ````

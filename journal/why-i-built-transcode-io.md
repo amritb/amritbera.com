@@ -1,5 +1,6 @@
 # Why I built transcode.io
-I have been working with Drupal for past 5 years. I built sites for several people & multinational brands.
+
+(Still a draft) I have been working with Drupal for past 5 years. I built sites for several people & multinational brands.
 
 One thing I have noticed among all is, people do want to embed videos in their sites. Not just Vimeo or Youtube, but they want to upload and put those in the site. Of-course I say them its not a good idea to directly to directly put those in the site, as they are huge. Then I explain them about transcoding and how much time it consumes to integrate. Also brief them about Zencoder and other similar solutions (I feel these are quite expensive and restricted, as I regularly work with ElasticTranscoder on high budget projects).
 
