@@ -1,5 +1,3 @@
-#Hello world, again
-
 I have been blogging since 2008 with [Blogger](http://www.blogger.com/profile/12782589332515008638) but somehow lost track in the late 2010. Mostly I wrote about basic windows XP tricks and laptop overheating fixes!
 
 I don't feel I need those anymore. So finally getting rid of all those and starting a whole new blogging chapter. I am not good at all with writing but will try my best to rectify my mistakes and write well.

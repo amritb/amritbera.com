@@ -15,6 +15,9 @@ html
 		!= partial("_shared/nav")
 			div#content(class= (current.path[0] == 'journal' && current.path[1] !== 'index' ? current.path[0] : ''))
 				div.wrapper
+					if current.path[0] === 'journal' && current.path[1] !== 'index'
+						h1= public.journal.data[current.path[1]]['title']
+						div.date= public.journal.data[current.path[1]]['date']
 					!= yield
 
 				if current.path[0] == "journal" && current.path[1] !== "index"
