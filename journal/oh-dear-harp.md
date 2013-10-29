@@ -13,7 +13,12 @@ Read the quickstart and instantly got amazed. In no time fired up my own instanc
 |-- harp_amritbera_www
    |-- amritbera.com      <-- Branch 'gh-pages'
 ````
-FInally compiled the source with
+Finally compiled the source, copied the www contents to harp_amritbera_www and pushed to gh-pages.
 ````
-$ harp compile -o ../harp_amritbera_www/amritbera.com
+$ harp compile
 ````
+Git push and a page refresh. Then a 10 minutes break to click on the same nav links again & again and check if everything is perfect!
+
+Harp is amazingly intelligent. The connect page is in html, the journals are in markdown whereas others are in jade. Whatever I throw in, it compiles that to static html.
+
+##It can be a common practice these days. But for me, its magic!
