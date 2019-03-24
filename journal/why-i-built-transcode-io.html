@@ -1,40 +1,62 @@
-<!DOCTYPE html><html><head><title>Why I built transcode.io - Amrit Bera</title><link rel="stylesheet" href="http://yandex.st/highlightjs/7.3/styles/googlecode.min.css"><link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800"><link rel="stylesheet" href="/responsive.css"><link rel="stylesheet" href="/main.css"><meta name="viewport" content="width=device-width, initial-scale=1"></head><body><nav><div class="section group"><div class="nav-align-center"><a href="/">Home</a><a href="/journal" class="active">Journal</a><a href="/connect">Connect</a></div></div></nav><div id="content" class="journal"><div class="wrapper"><h1>Why I built transcode.io</h1><div class="date">Oct 18, 2013</div><p>I have been working with web technologies for past 5 years and what seems like an eternity. I built sites for all sorts of Toms, Harrys &amp; various multinational brands.</p>
-<p>One thing I have noticed very often while travelling down these convoluted paths is that people do want to embed videos in their sites. Not just <a href="https://vimeo.com/">Vimeo</a> or <a href="http://youtube.com">Youtube</a>, but they want to upload and put them on the site. Of-course I say them its not a good idea to directly put them there, as they are &quot;big and fat&quot; and take up a lot of space on the sofa, leaving very little for others to be comfortable in. Then I explain to them about transcoding and how much time it consumes to integrate it. Also brief them about <a href="http://zencoder.com">Zencoder</a> and other similar solutions (I feel these are quite expensive and restricted, as I regularly work with <a href="https://aws.amazon.com/elastictranscoder/">ElasticTranscoder</a> on high budget projects) - losing &quot;the fat&quot; is not easy business.</p>
-<p> As far as I know, drupal don&#39;t have any direct approach to integrate <a href="https://aws.amazon.com/elastictranscoder/">ElasticTranscoder</a>. It does have modules for uploading to <a href="https://aws.amazon.com/s3/">S3</a>, but you are on your own with <a href="https://aws.amazon.com/elastictranscoder/">ElasticTranscoder</a>. I have a custom module to do it, but still don&#39;t like it much. I have this bad habit of writing too much code even if there are direct solutions. I just want it my way.</p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>amritbera.com - Why I built transcode.io</title>
+  <meta charset="utf-8" />
+
+
+
+
+
+
+  <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+  <link rel="stylesheet" href="https://amritbera.com/theme/css/responsive.css" />
+  <link rel="stylesheet" href="https://amritbera.com/theme/css/main.css" />
+
+</head>
+
+<body id="index" class="home">
+  <nav>
+    <div class="section group">
+      <div class="col span_1_of_3">
+      </div>
+      <div class="col span_2_of_3">
+        <a href="/" >Home</a>
+        <a href="/journal.html"  class="active" >Journal</a>
+        <a href="/connect.html" >Connect</a>
+      </div>
+    </div>
+  </nav><!-- /#menu -->
+<section id="content" class="body journal">
+  <div class="wrapper">
+  <header>
+    <h1 class="entry-title">Why I built transcode.io</h1>
+ 
+  </header>
+  <footer class="post-info">
+    <div class="published date" datetime="2013-10-18T19:30:00+02:00">
+      Fri 18 October 2013
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>I have been working with web technologies for past 5 years and what seems like an eternity. I built sites for all sorts of Toms, Harrys &amp; various multinational brands.</p>
+<p>One thing I have noticed very often while travelling down these convoluted paths is that people do want to embed videos in their sites. Not just <a href="https://vimeo.com/">Vimeo</a> or <a href="http://youtube.com">Youtube</a>, but they want to upload and put them on the site. Of-course I say them its not a good idea to directly put them there, as they are "big and fat" and take up a lot of space on the sofa, leaving very little for others to be comfortable in. Then I explain to them about transcoding and how much time it consumes to integrate it. Also brief them about <a href="http://zencoder.com">Zencoder</a> and other similar solutions (I feel these are quite expensive and restricted, as I regularly work with <a href="https://aws.amazon.com/elastictranscoder/">ElasticTranscoder</a> on high budget projects) - losing "the fat" is not easy business.</p>
+<p>As far as I know, drupal don't have any direct approach to integrate <a href="https://aws.amazon.com/elastictranscoder/">ElasticTranscoder</a>. It does have modules for uploading to <a href="https://aws.amazon.com/s3/">S3</a>, but you are on your own with <a href="https://aws.amazon.com/elastictranscoder/">ElasticTranscoder</a>. I have a custom module to do it, but still don't like it much. I have this bad habit of writing too much code even if there are direct solutions. I just want it my way.</p>
 <h2>The geek monster in me remains satisfied!</h2>
 <p>Of all the additional trouble in the world, with the rising prices of products and vegetables, the global warming, radical elements in society, Facebook security :-P , the last thing people want to trouble themselves with is all of this.</p>
-<p>I wanted a tool or a system which will take care of all the <a href="https://aws.amazon.com/s3/">S3</a> business (the extra sofa) and then transcoding (the gym training) &amp; storing it for later use. All this should happen seamlessly. I don&#39;t want to charge my clients exclusively for the integration (storage and transcoding charges are anyway there). Yet I don&#39;t want to loose the flexibility to code my &lt;video&gt; element and use whatever player I like.</p>
-<p>I built <a href="http://transcode.io">transcode.io</a> which does exactly this. Users upload HD videos which are saved in the host server or a CDN. This is a very common practice with just file upload form element and some validation. Developers store the path of the file in db and then prints it back inside the video element&#39;s source property. </p>
+<p>I wanted a tool or a system which will take care of all the <a href="https://aws.amazon.com/s3/">S3</a> business (the extra sofa) and then transcoding (the gym training) &amp; storing it for later use. All this should happen seamlessly. I don't want to charge my clients exclusively for the integration (storage and transcoding charges are anyway there). Yet I don't want to loose the flexibility to code my &lt;video&gt; element and use whatever player I like.</p>
+<p>I built <a href="http://transcode.io">transcode.io</a> which does exactly this. Users upload HD videos which are saved in the host server or a CDN. This is a very common practice with just file upload form element and some validation. Developers store the path of the file in db and then prints it back inside the video element's source property. </p>
 <p><a href="http://transcode.io">transcode.io</a> just want you to pass in the video path and it does the rest. Transcodes it and then stores it to <a href="https://aws.amazon.com/s3/">S3</a>. When its done, it also gives a 301 redirect to the <a href="https://aws.amazon.com/s3/">S3</a> transcoded video file. Also it sends temporary processing and error videos when needed. </p>
 <p>Thats it then! Now you can all worry about the much more important things in life like fine tuning the starting line you have been planning to use on the pretty girl/guy you have been wanting to talk to for a long time. </p>
 <p>Oh I should also mention my friends, who are big in the industry so you can trust them to give a solid hand to my product.</p>
 <h2>transcode.io is built with Node.js and heavily uses streams. Hosted with Heroku</h2>
 <p>I have released an alpha version (just a MVP) to see if anyone else wants to use it. If you are interested, please submit the form at <a href="http://transcode.io">transcode.io</a> and your account ID will be sent to you.</p>
 <p>Happy transcoding :)</p>
-</div><div class="disqus-comments"><div id="disqus_thread"></div>
-<script type="text/javascript">
-    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-    var disqus_shortname = 'amritbera'; // required: replace example with your forum shortname
+  </div>
+  </div><!-- /.entry-content -->
+</section>
+</body>
 
-    /* * * DON'T EDIT BELOW THIS LINE * * */
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-</div></div><script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-16031969-3']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script><script src="http://yandex.st/highlightjs/7.3/highlight.min.js"></script><script>hljs.initHighlightingOnLoad();</script></body></html>
+</html>
