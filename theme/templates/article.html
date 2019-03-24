@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block html_lang %}{{ article.lang }}{% endblock %}
+
+{% block title %}{{ SITENAME }} - {{ article.title }}{% endblock %}
+
+{% block head %}
+  {{ super() }}
+
+  {% import 'translations.html' as translations with context %}
+  {% if translations.entry_hreflang(article) %}
+    {{ translations.entry_hreflang(article) }}
+  {% endif %}
+
+  {% if article.description %}
+    <meta name="description" content="{{article.description}}" />
+  {% endif %}
+
+  {% for tag in article.tags %}
+    <meta name="tags" content="{{tag}}" />
+  {% endfor %}
+
+{% endblock %}
+
+{% block content %}
+<section id="content" class="body journal">
+  <div class="wrapper">
+  <header>
+    <h1 class="entry-title">{{ article.title }}</h1>
+ {% import 'translations.html' as translations with context %}
+ {{ translations.translations_for(article) }}
+  </header>
+  <footer class="post-info">
+    <div class="published date" datetime="{{ article.date.isoformat() }}">
+      {{ article.locale_date }}
+    </div>
+    {% if article.modified and (article.modified != article.date) %}
+    <div class="modified date" datetime="{{ article.modified.isoformat() }}">
+      (Last updated: {{ article.locale_modified }})
+    </div>
+    {% endif %}
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    {{ article.content }}
+  </div>
+  </div><!-- /.entry-content -->
+</section>
+{% endblock %}
