@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>amritbera.com - Local insecure registry with minikube</title>
+  <meta charset="utf-8" />
+
+
+
+
+
+
+  <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+  <link rel="stylesheet" href="https://amritbera.com/theme/css/responsive.css" />
+  <link rel="stylesheet" href="https://amritbera.com/theme/css/main.css" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+</head>
+
+<body id="index" class="home">
+  <nav>
+    <div class="section group">
+      <div class="col span_1_of_3">
+      </div>
+      <div class="col span_2_of_3">
+        <a href="/" >Home</a>
+        <a href="/journal.html"  class="active" >Journal</a>
+        <a href="/connect.html" >Connect</a>
+      </div>
+    </div>
+  </nav><!-- /#menu -->
+<section id="content" class="body journal">
+  <div class="wrapper">
+  <header>
+    <h1 class="entry-title">Local insecure registry with minikube</h1>
+ 
+  </header>
+  <footer class="post-info">
+    <div class="published date" datetime="2019-01-23T18:20:00+01:00">
+      Wed 23 January 2019
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>Many a times we like to develop kubernetes applications locally and deploy it to minikube for testing purposes. The workflow involves:</p>
+<ul>
+<li>Edit code (&amp; compile)</li>
+<li>Build &amp; tag docker image</li>
+<li>Push the image to local registry</li>
+<li>Execute kubectl / helm deployment</li>
+</ul>
+<p>To achieve this, we need to have a local docker registry running on minikube, configure docker daemon and deployments correctly. For this tutorial I am using kubernets <code>v1.12.6</code> and minikube <code>v0.35.0</code>.</p>
+<p>For the registry, let's enable the minikube registry <a href="https://github.com/kubernetes/minikube/blob/master/docs/addons.md">addon</a>:</p>
+<div class="highlight"><pre><span></span>$ minikube addons <span class="nb">enable</span> registry
+</pre></div>
+
+
+<p>By default, the registry has a service <a href="https://github.com/kubernetes/minikube/blob/master/deploy/addons/registry/registry-svc.yaml#L10">type</a> of <code>clusterIP</code>. Let's update this and change it to <code>NodePort</code>. If you want a consistent port, add a <code>NodePort</code> value as well, e.x. 30237. Once the service is saved, your registry will be accessible from the host machine <code>http://minikube-vm-ip:30237/v2/_catalog</code>. Get the IP address using</p>
+<div class="highlight"><pre><span></span>$ minikube ip
+</pre></div>
+
+
+<p>To use this registry from your host machine, you need to add this IP address to the insecure registries daemon configuration. For mac, go to <code>Docker desktop preferences -&gt; Daemon -&gt; Basic -&gt; Add insecure registry</code>.</p>
+<p>Once this is done, you can build and push images to this registry.</p>
+<div class="highlight"><pre><span></span>$ docker build -t minikube-vm-ip:30237/my-image:1 .
+$ docker push minikube-vm-ip:30237/my-image:1
+</pre></div>
+
+
+<p>Now the kubernetes part. Copy the <code>clusterIP</code> of the <a href="http://localhost:8001/api/v1/namespaces/kube-system/services/http:kubernetes-dashboard:/proxy/#!/service/kube-system/registry?namespace=kube-system">registry service</a> running on <code>kube-system</code> namespace and put it on the pod spec's image:</p>
+<div class="highlight"><pre><span></span>...
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+      - name: my-container
+        image: &lt;cluster-ip&gt;:80/my-image:1
+...
+</pre></div>
+
+
+<p>Here port 80 is fine as it's the default <a href="https://github.com/kubernetes/minikube/blob/master/deploy/addons/registry/registry-svc.yaml#L12">configuration</a>.</p>
+  </div>
+  </div><!-- /.entry-content -->
+</section>
+
+  <div class="copyright">
+    <br>
+    <br>
+    © Copyright 2019, Amrit Bera
+    <br>
+  </div>
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-16031969-3']);
+    _gaq.push(['_trackPageview']);
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+</body>
+
+</html>
