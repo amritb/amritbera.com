@@ -3,7 +3,7 @@
 
 <head>
   {% block head %}
-  <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+  <title>{% block title %}{{ SITENAME }} - backend & devops (go, python, kubernetes, ansible) consultant - Berlin{% endblock title %}</title>
   <meta charset="utf-8" />
   {% if FEED_ALL_ATOM %}
   <link
@@ -49,6 +49,9 @@
   <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/responsive.css" />
   <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/main.css" />
 
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
 </head>
 
 <body id="index" class="home">
@@ -67,6 +70,15 @@
   {% endif %}
   {% block content %}
   {% endblock %}
+
+  {% if output_file != "connect.html" and output_file != "index.html" %}
+  <div class="copyright">
+    <br>
+    <br>
+    © Copyright {{ CURRENTYEAR }}, Amrit Bera
+    <br>
+  </div>
+  {% endif %}
 
   <script type="text/javascript">
     var _gaq = _gaq || [];

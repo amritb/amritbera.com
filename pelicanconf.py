@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
+from datetime import date
 
 AUTHOR = 'Amrit Bera'
 SITENAME = 'amritbera.com'
@@ -41,6 +42,8 @@ CATEGORY_FEED_ATOM = None
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
+
+CURRENTYEAR = date.today().year
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
