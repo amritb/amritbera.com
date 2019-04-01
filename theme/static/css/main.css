@@ -138,12 +138,15 @@ div.copyright {
   padding:40px 0;
 }
 @media only screen and (max-width: 480px) {
-  .journal p, .journal h1, .journal h2, .journal ul, .journal pre { 
+  .journal p, .journal h1, .journal h2, .journal ul { 
     width:100%; 
     font-size: 18px;
   }
   .journal code, .journal pre {
     font-size: 16px;
+  }
+  .journal pre {
+    width: 92%;
   }
   .journal ul { 
     padding-left: 22px;
