@@ -44,12 +44,13 @@
     </div>
   </footer><!-- /.post-info -->
   <div class="entry-content">
-    <p>Many a times we like to develop kubernetes applications locally and deploy it to minikube for testing purposes. The workflow involves:</p>
+    <p>Often we like to develop kubernetes applications locally and deploy it to minikube for testing purposes. The workflow involves:</p>
 <ul>
 <li>Edit code (&amp; compile)</li>
 <li>Build &amp; tag docker image</li>
-<li>Push the image to local registry</li>
-<li>Execute kubectl / helm deployment</li>
+<li>Push the image to a local registry</li>
+<li>Update image tag in the deployment yaml</li>
+<li>Execute kubectl / helm upgrade on the local minikube cluster</li>
 </ul>
 <p>To achieve this, we need to have a local docker registry running on minikube, configure docker daemon and deployments correctly. For this tutorial I am using kubernets <code>v1.12.6</code> and minikube <code>v0.35.0</code>.</p>
 <p>For the registry, let's enable the minikube registry <a href="https://github.com/kubernetes/minikube/blob/master/docs/addons.md">addon</a>:</p>
