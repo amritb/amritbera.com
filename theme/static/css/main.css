@@ -105,6 +105,7 @@ div.copyright {
   border-radius: 6px;
   font-size: 20px;
   font-weight: lighter;
+  overflow-y: scroll;
 }
 .journal code { 
   font-size: 20px;
@@ -141,7 +142,7 @@ div.copyright {
     width:100%; 
     font-size: 18px;
   }
-  .journal code, .jornap pre {
+  .journal code, .journal pre {
     font-size: 16px;
   }
   .journal ul { 
