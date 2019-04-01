@@ -5,12 +5,13 @@ Slug: minikube-insecure-registry
 Authors: Amrit Bera
 Summary: Setting insecure docker registry with minikube for local development
 
-Many a times we like to develop kubernetes applications locally and deploy it to minikube for testing purposes. The workflow involves:
+Often we like to develop kubernetes applications locally and deploy it to minikube for testing purposes. The workflow involves:
 
 - Edit code (& compile)
 - Build & tag docker image
-- Push the image to local registry
-- Execute kubectl / helm deployment
+- Push the image to a local registry
+- Update image tag in the deployment yaml
+- Execute kubectl / helm upgrade on the local minikube cluster
 
 To achieve this, we need to have a local docker registry running on minikube, configure docker daemon and deployments correctly. For this tutorial I am using kubernets `v1.12.6` and minikube `v0.35.0`.
 
