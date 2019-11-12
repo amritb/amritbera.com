@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>amritbera.com - Kubernetes NetworkPolicy to block internal calls</title>
+  <meta charset="utf-8" />
+
+
+
+
+
+
+  <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+  <link rel="stylesheet" href="https://amritbera.com/theme/css/responsive.css" />
+  <link rel="stylesheet" href="https://amritbera.com/theme/css/main.css" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+</head>
+
+<body id="index" class="home">
+  <nav>
+    <div class="section group">
+      <div class="col span_1_of_3">
+      </div>
+      <div class="col span_2_of_3">
+        <a href="/" >Home</a>
+        <a href="/journal.html"  class="active" >Journal</a>
+        <a href="/connect.html" >Connect</a>
+      </div>
+    </div>
+  </nav><!-- /#menu -->
+<section id="content" class="body journal">
+  <div class="wrapper">
+  <header>
+    <h1 class="entry-title">Kubernetes NetworkPolicy to block internal calls</h1>
+ 
+  </header>
+  <footer class="post-info">
+    <div class="published date" datetime="2019-09-11T19:30:00+02:00">
+      Wed 11 September 2019
+    </div>
+  </footer><!-- /.post-info -->
+  <div class="entry-content">
+    <p>Network policies are pretty powerful in kubernetes. It helps us define how a group of pods can communicate with other network endpoints - which can be internal or external to the cluster.</p>
+<p>And if you want to run <strong>customer workloads</strong>, it's always a good idea to make sure none of the pods can connect to other network endpoints running inside your cluster. <a href="https://kubernetes.io/docs/concepts/services-networking/network-policies/">NetworkPolicies</a> are the perfect candidate to implement this.</p>
+<p>One thing to keep in mind, as soon as you block all outgoing connections internal to the cluster, <strong>DNS will be unreachable</strong> as well. To make it work, you have to add a <a href="https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#pod-s-dns-config">DNS config</a> for the pod which will configure it's <code>resolv.conf</code>. Example pod spec:</p>
+<div class="highlight"><pre><span></span><span class="p">...</span>
+<span class="n">spec</span><span class="p">:</span>
+  <span class="n">containers</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">test</span>
+      <span class="n">image</span><span class="p">:</span> <span class="n">nginx</span>
+  <span class="n">dnsPolicy</span><span class="p">:</span> <span class="ss">&quot;None&quot;</span>
+  <span class="n">dnsConfig</span><span class="p">:</span>
+    <span class="n">nameservers</span><span class="p">:</span>
+      <span class="o">-</span> <span class="mi">1</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">1</span>
+<span class="p">...</span>
+</pre></div>
+
+
+<p>Once this is set and assuming your pod don't have to connect to any other component inside the cluster, we can have a NetworkPolicy similar to this:</p>
+<div class="highlight"><pre><span></span><span class="n">apiVersion</span><span class="o">:</span> <span class="n">networking</span><span class="o">.</span><span class="na">k8s</span><span class="o">.</span><span class="na">io</span><span class="o">/</span><span class="n">v1</span>
+<span class="n">kind</span><span class="o">:</span> <span class="n">NetworkPolicy</span>
+<span class="n">metadata</span><span class="o">:</span>
+  <span class="kd">namespace</span><span class="o">:</span> <span class="n">example</span><span class="o">-</span><span class="kd">namespace</span>
+  <span class="n">name</span><span class="o">:</span> <span class="n">np</span><span class="o">-</span><span class="n">block</span><span class="o">-</span><span class="kd">internal</span>
+<span class="n">spec</span><span class="o">:</span>
+  <span class="n">podSelector</span><span class="o">:</span> <span class="o">{}</span>
+  <span class="n">policyTypes</span><span class="o">:</span>
+  <span class="o">-</span> <span class="n">Egress</span>
+  <span class="n">egress</span><span class="o">:</span>
+  <span class="o">-</span> <span class="n">to</span><span class="o">:</span>
+    <span class="o">-</span> <span class="n">ipBlock</span><span class="o">:</span>
+        <span class="n">cidr</span><span class="o">:</span> <span class="mf">0.0</span><span class="o">.</span><span class="mf">0.0</span><span class="o">/</span><span class="mi">0</span>
+        <span class="n">except</span><span class="o">:</span>
+        <span class="o">-</span> <span class="mf">10.0</span><span class="o">.</span><span class="mf">0.0</span><span class="o">/</span><span class="mi">21</span>
+</pre></div>
+
+
+<p>Few things to notice here:</p>
+<ul>
+<li><code>podSelector: {}</code> specifies all pods in this namespace should be affected</li>
+<li><code>egress</code> means outgoing connections</li>
+<li><code>to</code> <code>ipBlock</code> <code>cidr</code> sets the rule. 0.0.0.0/0 means all IP addresses over the internet are allowed. Except 10.0.0.0/21</li>
+<li><code>10.0.0.0/21</code> is the pod address range. This is different for each cloud provider, configured during cluster creation. In GCP it's set with the <code>--cluster-ipv4-cidr</code> flag if you are creating the cluster via CLI.</li>
+</ul>
+  </div>
+
+
+    <br>
+  <div id="disqus_thread"></div>
+
+  <script>
+
+  /**
+  *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+  *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+  
+  var disqus_config = function () {
+  this.page.url = "https://amritbera.com/journal/kubernetes-networkpolicy-block-internal.html"; // Replace PAGE_URL with your page's canonical URL variable
+  this.page.identifier = "kubernetes-networkpolicy-block-internal"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+  };
+  
+  (function() { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  s.src = 'https://amritbera.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+  </div><!-- /.entry-content -->
+</section>
+
+  <div class="copyright">
+    <br>
+    <br>
+    © Copyright 2019, Amrit Bera
+    <br>
+  </div>
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-16031969-3']);
+    _gaq.push(['_trackPageview']);
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+</body>
+
+</html>
