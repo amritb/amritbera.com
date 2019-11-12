@@ -71,20 +71,45 @@ $ docker push minikube-vm-ip:30237/my-image:1
 
 
 <p>Now the kubernetes part. Copy the <code>clusterIP</code> of the <a href="http://localhost:8001/api/v1/namespaces/kube-system/services/http:kubernetes-dashboard:/proxy/#!/service/kube-system/registry?namespace=kube-system">registry service</a> running on <code>kube-system</code> namespace and put it on the pod spec's image:</p>
-<div class="highlight"><pre><span></span>...
-spec:
-  replicas: 1
-  template:
-    spec:
-      containers:
-      - name: my-container
-        image: &lt;cluster-ip&gt;:80/my-image:1
-...
+<div class="highlight"><pre><span></span><span class="p">...</span>
+<span class="n">spec</span><span class="p">:</span>
+  <span class="n">replicas</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="k">template</span><span class="p">:</span>
+    <span class="n">spec</span><span class="p">:</span>
+      <span class="n">containers</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">my</span><span class="o">-</span><span class="n">container</span>
+        <span class="n">image</span><span class="p">:</span> <span class="o">&lt;</span><span class="k">cluster</span><span class="o">-</span><span class="n">ip</span><span class="o">&gt;</span><span class="p">:</span><span class="mi">80</span><span class="o">/</span><span class="n">my</span><span class="o">-</span><span class="n">image</span><span class="p">:</span><span class="mi">1</span>
+<span class="p">...</span>
 </pre></div>
 
 
 <p>Here port 80 is fine as it's the default <a href="https://github.com/kubernetes/minikube/blob/master/deploy/addons/registry/registry-svc.yaml#L12">configuration</a>.</p>
   </div>
+
+
+    <br>
+  <div id="disqus_thread"></div>
+
+  <script>
+
+  /**
+  *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+  *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+  
+  var disqus_config = function () {
+  this.page.url = "https://amritbera.com/journal/minikube-insecure-registry.html"; // Replace PAGE_URL with your page's canonical URL variable
+  this.page.identifier = "minikube-insecure-registry"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+  };
+  
+  (function() { // DON'T EDIT BELOW THIS LINE
+  var d = document, s = d.createElement('script');
+  s.src = 'https://amritbera.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+  })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
   </div><!-- /.entry-content -->
 </section>
 
