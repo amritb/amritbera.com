@@ -114,9 +114,9 @@ div.copyright {
   border-radius: 4px;
   font-weight: 100;
 }
-.journal p, .journal ul {
+.journal p, .journal ul, #disqus_thread {
   font-size:24px;
-  width:60%;
+  width:70%;
   margin:30px auto;
 }
 
@@ -138,7 +138,7 @@ div.copyright {
   padding:40px 0;
 }
 @media only screen and (max-width: 480px) {
-  .journal p, .journal h1, .journal h2, .journal ul { 
+  .journal p, .journal h1, .journal h2, .journal ul, #disqus_thread { 
     width:100%; 
     font-size: 18px;
   }
